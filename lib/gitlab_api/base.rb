@@ -20,6 +20,11 @@ module GitlabApi
       self
     end
 
+    def post(&block)
+      self.response = connection.post(&block)
+      self
+    end
+
     def data
       @data ||= JSON.parse(response.body)
     end
