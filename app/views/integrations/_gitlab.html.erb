@@ -10,7 +10,14 @@
     <%= p.label :private_token %>
     <%= p.text_field :token,
                      class: "form-control auth-form-control",
-                     placeholder: "Project admin's private token"%>
+                     placeholder: "The project admin's private token"%>
+  </div>
+
+  <div class="form-group">
+    <%= p.label :secret_key %>
+    <%= p.text_field :secret_key,
+                     class: "form-control auth-form-control",
+                     placeholder: "The secret key from the gitlab integration"%>
   </div>
 
   <div class="form-group">

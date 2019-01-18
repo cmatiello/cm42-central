@@ -1,8 +1,9 @@
 module Gitlab
   module Projects
-    class EventsController < ActionController::Base
+    class EventsController < WebhookBaseController
       def create
-        render status: :ok
+        Gitlab::ProjectEventsService.perform(params)
+        head :ok
       end
     end
   end
