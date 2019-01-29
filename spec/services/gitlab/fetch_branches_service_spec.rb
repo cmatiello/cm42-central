@@ -13,7 +13,7 @@ describe Gitlab::FetchBranchesService do
   describe '#fetch' do
     before do
       allow(integrations).to receive(:find_by).with(kind: 'gitlab').and_return(gitlab_integration)
-      allow(GitlabApi::FetchProjects).to receive(:perform).with('url', 'token', 1).and_return(response)
+      allow(GitlabApi::FetchBranches).to receive(:perform).with('url', 'token', 1).and_return(response)
     end
 
     subject { described_class.new(project).fetch }
@@ -26,7 +26,7 @@ describe Gitlab::FetchBranchesService do
       end
     end
 
-    context 'when it succeeds' do
+    context 'when it fails' do
       let(:response) { double(:response, success?: false) }
 
       it 'returns false' do

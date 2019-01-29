@@ -1,5 +1,7 @@
 module Gitlab
   class FetchProjectsService
+    delegate :error_message, to: :api, allow_nil: true
+
     def initialize(project)
       @project = project
     end
@@ -17,10 +19,6 @@ module Gitlab
       return unless api&.success?
 
       api.data.map { |project| Gitlab::Project.new(project) }
-    end
-
-    def error_message
-      api&.error_message
     end
 
     private

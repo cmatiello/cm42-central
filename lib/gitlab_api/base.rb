@@ -26,7 +26,7 @@ module GitlabApi
     end
 
     def data
-      @data ||= JSON.parse(response.body)
+      @data ||= JSON.parse(response&.body)
     end
 
     def success?
