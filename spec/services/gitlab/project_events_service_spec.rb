@@ -4,14 +4,13 @@ describe Gitlab::ProjectEventsService do
   describe '#perform' do
     subject { service.perform }
     let(:service) { described_class.new(params) }
-
+    let(:story) { FactoryBot.create(:story, :with_project) }
     before do
-      allow(service).to receive(:story).and_return('story')
-      allow(service).to receive(:user).and_return('user')
+      allow(service).to receive(:story).and_return(story)
       allow(StoryOperations::Update).to receive(:call).with(
-        'story',
+        story,
         { state: 'delivered' },
-        'user'
+        story.requested_by
       ).and_return(true)
     end
 

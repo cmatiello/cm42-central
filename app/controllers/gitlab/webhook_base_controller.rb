@@ -16,12 +16,12 @@ module Gitlab
       @integration ||= project.integrations.find_by(kind: 'gitlab')
     end
 
-    def story
-      @story ||= Story.find_by branch: @params['object_attributes']['source_branch']
-    end
-
     def project
       @project ||= story.project
+    end
+
+    def story
+      @story ||= Story.find_by branch: params['object_attributes']['source_branch']
     end
   end
 end
