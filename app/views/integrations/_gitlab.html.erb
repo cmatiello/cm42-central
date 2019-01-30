@@ -2,7 +2,7 @@
   <div class="form-group">
     <%= p.label :integration_url %>
     <%= p.text_field :url,
-                     placeholder: 'Your gitlab repository API link',
+                     placeholder: t('projects.integrations_gitlab_url_placeholder'),
                      class: "form-control auth-form-control" %>
   </div>
 
@@ -10,14 +10,14 @@
     <%= p.label :private_token %>
     <%= p.text_field :token,
                      class: "form-control auth-form-control",
-                     placeholder: "The project admin's private token"%>
+                     placeholder: t('projects.integrations_gitlab_token_placeholder')%>
   </div>
 
   <div class="form-group">
     <%= p.label :secret_key %>
     <%= p.text_field :secret_key,
                      class: "form-control auth-form-control",
-                     placeholder: "The secret key from the gitlab integration"%>
+                     placeholder: t('projects.integrations_gitlab_secret_key_placeholder')%>
   </div>
 
   <div class="form-group">
